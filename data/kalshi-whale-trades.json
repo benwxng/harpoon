@@ -1,0 +1,43 @@
+{
+  "trades": [
+    {
+      "trade_id": "0777f2d5-e0de-74d6-70a2-992eec75c9ee",
+      "ticker": "KXMVENFLMULTIGAMEEXTENDED-S20250A6AC323F10-2689BC93068",
+      "market_title": "yes Buffalo,yes New England,yes Atlanta,yes Philadelphia,yes Cincinnati,yes Tampa Bay,yes Kansas City,yes Indianapolis wins by over 13.5 points,yes Over 38.5 points scored",
+      "price": 0.07,
+      "count": 1981,
+      "yes_price": 7,
+      "no_price": 92,
+      "yes_price_dollars": "0.0710",
+      "no_price_dollars": "0.9290",
+      "taker_side": "yes",
+      "created_time": "2025-10-26T08:21:54.210049Z",
+      "trade_value_dollars": 140.65
+    }
+  ],
+  "count": 1,
+  "lastUpdated": "2025-10-26T08:36:12.119Z",
+  "timeRange": {
+    "from": "2025-10-25T08:36:08.000Z",
+    "to": "2025-10-26T08:36:12.119Z"
+  },
+  "summary": {
+    "totalVolume": 140.65,
+    "largestTrade": {
+      "trade_id": "0777f2d5-e0de-74d6-70a2-992eec75c9ee",
+      "ticker": "KXMVENFLMULTIGAMEEXTENDED-S20250A6AC323F10-2689BC93068",
+      "market_title": "yes Buffalo,yes New England,yes Atlanta,yes Philadelphia,yes Cincinnati,yes Tampa Bay,yes Kansas City,yes Indianapolis wins by over 13.5 points,yes Over 38.5 points scored",
+      "price": 0.07,
+      "count": 1981,
+      "yes_price": 7,
+      "no_price": 92,
+      "yes_price_dollars": "0.0710",
+      "no_price_dollars": "0.9290",
+      "taker_side": "yes",
+      "created_time": "2025-10-26T08:21:54.210049Z",
+      "trade_value_dollars": 140.65
+    },
+    "averageTradeSize": 140.65
+  },
+  "note": "Real individual trades from Kalshi API. Each trade shows exact dollar amount and side (yes/no)."
+}

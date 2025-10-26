@@ -1,0 +1,928 @@
+{
+  "trades": [
+    {
+      "id": "521918-1761461742887",
+      "market": "Will UCR hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521918",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 610373,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.001,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-ucr-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ]
+    },
+    {
+      "id": "517014-1761461742885",
+      "market": "Will The Fantastic Four: First Steps be the top grossing movie of 2025?",
+      "marketId": "517014",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 385406,
+      "currentPrice": 0.004,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-the-fantastic-four-first-steps-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ]
+    },
+    {
+      "id": "521936-1761461742887",
+      "market": "Will HNP win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521936",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 294881,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0.002,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-hnp-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ]
+    },
+    {
+      "id": "516863-1761461742885",
+      "market": "Will Bitcoin reach $200,000 by December 31, 2025?",
+      "marketId": "516863",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 143669,
+      "currentPrice": 0.038,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.006,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-bitcoin-reach-200000-by-december-31-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.032,
+        0.968
+      ]
+    },
+    {
+      "id": "516947-1761461742885",
+      "market": "Maduro out in 2025?",
+      "marketId": "516947",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 104595,
+      "currentPrice": 0.24,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.005,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/maduro-out-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.235,
+        0.765
+      ]
+    },
+    {
+      "id": "517018-1761461742886",
+      "market": "Will Thunderbolts be the top grossing movie of 2025?",
+      "marketId": "517018",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 73972,
+      "currentPrice": 0.003,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-thunderbolts-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ]
+    },
+    {
+      "id": "517013-1761461742885",
+      "market": "Will Superman be the top grossing movie of 2025?",
+      "marketId": "517013",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 67142,
+      "currentPrice": 0.003,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-superman-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ]
+    },
+    {
+      "id": "517015-1761461742885",
+      "market": "Will Jurassic World: Rebirth be the top grossing movie of 2025?",
+      "marketId": "517015",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 64598,
+      "currentPrice": 0.004,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-jurassic-world-rebirth-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0045,
+        0.9955
+      ]
+    },
+    {
+      "id": "516719-1761461742884",
+      "market": "Russia x Ukraine ceasefire in 2025?",
+      "marketId": "516719",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 53339,
+      "currentPrice": 0.13,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.01,
+      "timestamp": "2025-10-26T06:55:42.884Z",
+      "marketUrl": "https://polymarket.com/event/russia-x-ukraine-ceasefire-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.125,
+        0.875
+      ]
+    },
+    {
+      "id": "521933-1761461742887",
+      "market": "Will UP win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521933",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 50844,
+      "currentPrice": 0.3,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.09,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-up-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.305,
+        0.695
+      ]
+    },
+    {
+      "id": "517016-1761461742885",
+      "market": "Will Captain America: Brave New World be the top grossing movie of 2025?",
+      "marketId": "517016",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 47241,
+      "currentPrice": 0.004,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-captain-america-new-world-order-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ]
+    },
+    {
+      "id": "521932-1761461742887",
+      "market": "Will LLA win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521932",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 45395,
+      "currentPrice": 0.69,
+      "priceChange1hr": 0.005,
+      "priceChange24hr": 0.02,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-lla-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.7,
+        0.3
+      ]
+    },
+    {
+      "id": "521916-1761461742886",
+      "market": "Will UP hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521916",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 44795,
+      "currentPrice": 0.967,
+      "priceChange1hr": 0.001,
+      "priceChange24hr": 0.029,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-up-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.965,
+        0.035
+      ]
+    },
+    {
+      "id": "521915-1761461742886",
+      "market": "Will LLA hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521915",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 39043,
+      "currentPrice": 0.035,
+      "priceChange1hr": 0.002,
+      "priceChange24hr": 0.021,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-lla-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.035,
+        0.965
+      ]
+    },
+    {
+      "id": "516724-1761461742884",
+      "market": "Will 1 Fed rate cut happen in 2025?",
+      "marketId": "516724",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 37265,
+      "currentPrice": 0.006,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.0015,
+      "timestamp": "2025-10-26T06:55:42.884Z",
+      "marketUrl": "https://polymarket.com/event/will-1-fed-rate-cut-happen-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.005,
+        0.995
+      ]
+    },
+    {
+      "id": "520630-1761461742886",
+      "market": "Will China invade Taiwan in 2025?",
+      "marketId": "520630",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 36304,
+      "currentPrice": 0.031,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.0025,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-china-invade-taiwan-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0315,
+        0.9685
+      ]
+    },
+    {
+      "id": "516876-1761461742885",
+      "market": "Will Ethereum hit $7,000 by December 31?",
+      "marketId": "516876",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 33763,
+      "currentPrice": 0.12,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.01,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-ethereum-hit-7000-by-december-31-733-852",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.115,
+        0.885
+      ]
+    },
+    {
+      "id": "524148-1761461742887",
+      "market": "Will Trump meet with Xi Jinping in 2025?",
+      "marketId": "524148",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 33435,
+      "currentPrice": 0.961,
+      "priceChange1hr": 0.0015,
+      "priceChange24hr": 0.007,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-trump-meet-with-xi-jinping-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.956,
+        0.044
+      ]
+    },
+    {
+      "id": "516877-1761461742885",
+      "market": "Will Ethereum hit $6,000 by December 31?",
+      "marketId": "516877",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 31848,
+      "currentPrice": 0.22,
+      "priceChange1hr": 0.005,
+      "priceChange24hr": 0.005,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-ethereum-hit-6000-by-december-31-843-315",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.22,
+        0.78
+      ]
+    },
+    {
+      "id": "516878-1761461742885",
+      "market": "Will Ethereum hit $5,000 by December 31?",
+      "marketId": "516878",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 30562,
+      "currentPrice": 0.438,
+      "priceChange1hr": 0.0095,
+      "priceChange24hr": 0.01,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-ethereum-hit-5000-by-december-31-796-376",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.4205,
+        0.5795
+      ]
+    },
+    {
+      "id": "517020-1761461742886",
+      "market": "Will A Minecraft Movie be the top grossing movie of 2025?",
+      "marketId": "517020",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 30322,
+      "currentPrice": 0.254,
+      "priceChange1hr": 0.0035,
+      "priceChange24hr": 0.1055,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-a-minecraft-movie-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.2335,
+        0.7665
+      ]
+    },
+    {
+      "id": "518870-1761461742886",
+      "market": "Will Donald Trump visit South Korea in 2025?",
+      "marketId": "518870",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 24068,
+      "currentPrice": 0.997,
+      "priceChange1hr": 0.002,
+      "priceChange24hr": 0.01,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/which-countries-will-donald-trump-visit-in-2025-will-donald-trump-visit-south-korea-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.9965,
+        0.0035
+      ]
+    },
+    {
+      "id": "521935-1761461742887",
+      "market": "Will UCR win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521935",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 23841,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-ucr-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ]
+    },
+    {
+      "id": "516861-1761461742885",
+      "market": "Will Bitcoin reach $1,000,000 by December 31, 2025?",
+      "marketId": "516861",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 23365,
+      "currentPrice": 0.008,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-bitcoin-reach-1000000-by-december-31-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0075,
+        0.9925
+      ]
+    },
+    {
+      "id": "516874-1761461742885",
+      "market": "Will Ethereum hit $10,000 by December 31?",
+      "marketId": "516874",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 22921,
+      "currentPrice": 0.036,
+      "priceChange1hr": 0.0005,
+      "priceChange24hr": 0.004,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-ethereum-hit-10000-by-december-31-218-525",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0385,
+        0.9615
+      ]
+    },
+    {
+      "id": "517021-1761461742886",
+      "market": "Will Lilo & Stitch be the top grossing movie of 2025?",
+      "marketId": "517021",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 21926,
+      "currentPrice": 0.027,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.013,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-movie-a-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0225,
+        0.9775
+      ]
+    },
+    {
+      "id": "516864-1761461742885",
+      "market": "Will Bitcoin reach $150,000 by December 31, 2025?",
+      "marketId": "516864",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 20946,
+      "currentPrice": 0.16,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-bitcoin-reach-150000-by-december-31-2025-188",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.155,
+        0.845
+      ]
+    },
+    {
+      "id": "521920-1761461742887",
+      "market": "Will FIT-U hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521920",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 19758,
+      "currentPrice": 0.002,
+      "priceChange1hr": 0.0005,
+      "priceChange24hr": 0.0005,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-fit-u-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ]
+    },
+    {
+      "id": "516720-1761461742884",
+      "market": "Putin out as President of Russia in 2025?",
+      "marketId": "516720",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 19723,
+      "currentPrice": 0.033,
+      "priceChange1hr": 0.0015,
+      "priceChange24hr": 0.009,
+      "timestamp": "2025-10-26T06:55:42.884Z",
+      "marketUrl": "https://polymarket.com/event/putin-out-as-president-of-russia-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.032,
+        0.968
+      ]
+    },
+    {
+      "id": "521938-1761461742887",
+      "market": "Will SER win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521938",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 19688,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0.0005,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-ser-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.001,
+        0.999
+      ]
+    },
+    {
+      "id": "521937-1761461742887",
+      "market": "Will FIT-U win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521937",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 19596,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-fit-u-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ]
+    },
+    {
+      "id": "516925-1761461742885",
+      "market": "Will the US confirm that aliens exist in 2025?",
+      "marketId": "516925",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 19451,
+      "currentPrice": 0.035,
+      "priceChange1hr": 0.0005,
+      "priceChange24hr": 0.005,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-the-us-confirm-that-aliens-exist-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.035,
+        0.965
+      ]
+    },
+    {
+      "id": "521917-1761461742887",
+      "market": "Will PRO hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521917",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 19120,
+      "currentPrice": 0.007,
+      "priceChange1hr": 0.0015,
+      "priceChange24hr": 0.002,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-pro-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.002,
+        0.998
+      ]
+    },
+    {
+      "id": "516730-1761461742885",
+      "market": "Will 7 Fed rate cuts happen in 2025?",
+      "marketId": "516730",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 18566,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-7-fed-rate-cuts-happen-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0015,
+        0.9985
+      ]
+    },
+    {
+      "id": "524146-1761461742887",
+      "market": "Will Trump meet with Kim Jong Un in 2025?",
+      "marketId": "524146",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 18482,
+      "currentPrice": 0.32,
+      "priceChange1hr": 0.005,
+      "priceChange24hr": 0.035,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-trump-meet-with-kim-jong-un-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.315,
+        0.685
+      ]
+    },
+    {
+      "id": "517019-1761461742886",
+      "market": "Will How to Train Your Dragon be the top grossing movie of 2025?",
+      "marketId": "517019",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 18144,
+      "currentPrice": 0.004,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-how-to-train-your-dragon-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ]
+    },
+    {
+      "id": "516929-1761461742885",
+      "market": "Will Gold close at $2,600-2,700 at the end of 2025?",
+      "marketId": "516929",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 17020,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-gold-close-at-2600-2700-at-the-end-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0015,
+        0.9985
+      ]
+    },
+    {
+      "id": "520579-1761461742886",
+      "market": "Israel and Saudi Arabia normalize relations in 2025?",
+      "marketId": "520579",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 14950,
+      "currentPrice": 0.09,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.01,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/israel-and-saudi-arabia-normalize-relations-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.095,
+        0.905
+      ]
+    },
+    {
+      "id": "516729-1761461742885",
+      "market": "Will 8+ Fed rate cuts happen in 2025?",
+      "marketId": "516729",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 13942,
+      "currentPrice": 0.004,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.0005,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-8plus-fed-rate-cuts-happen-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0045,
+        0.9955
+      ]
+    },
+    {
+      "id": "518868-1761461742886",
+      "market": "Will Donald Trump visit Japan in 2025?",
+      "marketId": "518868",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 12718,
+      "currentPrice": 0.997,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.011,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/which-countries-will-donald-trump-visit-in-2025-will-donald-trump-visit-japan-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.998,
+        0.002
+      ]
+    },
+    {
+      "id": "517017-1761461742886",
+      "market": "Will Zootopia 2 be the top grossing movie of 2025?",
+      "marketId": "517017",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 12603,
+      "currentPrice": 0.294,
+      "priceChange1hr": 0.0055,
+      "priceChange24hr": 0.0375,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-zootopia-2-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.2865,
+        0.7135
+      ]
+    },
+    {
+      "id": "516871-1761461742885",
+      "market": "Will Bitcoin dip to $70,000 by December 31, 2025?",
+      "marketId": "516871",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 12481,
+      "currentPrice": 0.07,
+      "priceChange1hr": 0.005,
+      "priceChange24hr": 0.005,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-bitcoin-dip-to-70000-by-december-31-2025-193-726-878-775-359",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.065,
+        0.935
+      ]
+    },
+    {
+      "id": "517011-1761461742885",
+      "market": "Will Avatar 3 be the top grossing movie of 2025?",
+      "marketId": "517011",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 11727,
+      "currentPrice": 0.078,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.0015,
+      "timestamp": "2025-10-26T06:55:42.885Z",
+      "marketUrl": "https://polymarket.com/event/will-avatar-3-be-the-top-grossing-movie-of-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.072,
+        0.928
+      ]
+    },
+    {
+      "id": "516716-1761461742883",
+      "market": "Khamenei out as Supreme Leader of Iran in 2025?",
+      "marketId": "516716",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 11637,
+      "currentPrice": 0.11,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.883Z",
+      "marketUrl": "https://polymarket.com/event/khamenei-out-as-supreme-leader-of-iran-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.115,
+        0.885
+      ]
+    },
+    {
+      "id": "516725-1761461742884",
+      "market": "Will 2 Fed rate cuts happen in 2025?",
+      "marketId": "516725",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 11339,
+      "currentPrice": 0.09,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0,
+      "timestamp": "2025-10-26T06:55:42.884Z",
+      "marketUrl": "https://polymarket.com/event/will-2-fed-rate-cuts-happen-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.08,
+        0.92
+      ]
+    },
+    {
+      "id": "519732-1761461742886",
+      "market": "Will Donald Trump visit China in 2025?",
+      "marketId": "519732",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 8274,
+      "currentPrice": 0.07,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.005,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-donald-trump-visit-china-in-2025-1",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.065,
+        0.935
+      ]
+    },
+    {
+      "id": "521919-1761461742887",
+      "market": "Will HNP hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521919",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 7658,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.002,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-hnp-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ]
+    },
+    {
+      "id": "517962-1761461742886",
+      "market": "Trump takes Panama Canal in 2025?",
+      "marketId": "517962",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 5768,
+      "currentPrice": 0.03,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.008,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/trump-takes-panama-canal-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0245,
+        0.9755
+      ]
+    },
+    {
+      "id": "518889-1761461742886",
+      "market": "Will Donald Trump visit Russia in 2025?",
+      "marketId": "518889",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 1361,
+      "currentPrice": 0.09,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.015,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-donald-trump-visit-russia-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.08,
+        0.92
+      ]
+    },
+    {
+      "id": "517321-1761461742886",
+      "market": "Will Trump deport 750,000 or more people in 2025?",
+      "marketId": "517321",
+      "outcome": "[",
+      "side": "BUY",
+      "dollarAmount": 1332,
+      "currentPrice": 0.06,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.0105,
+      "timestamp": "2025-10-26T06:55:42.886Z",
+      "marketUrl": "https://polymarket.com/event/will-trump-deport-750000-or-more-people-in-2025",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0645,
+        0.9355
+      ]
+    }
+  ],
+  "count": 50,
+  "lastUpdated": "2025-10-26T06:55:42.887Z",
+  "summary": {
+    "totalVolume": 2711197,
+    "largestActivity": {
+      "id": "521918-1761461742887",
+      "market": "Will UCR hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "marketId": "521918",
+      "outcome": "\"",
+      "side": "SELL",
+      "dollarAmount": 610373,
+      "currentPrice": 0.001,
+      "priceChange1hr": 0,
+      "priceChange24hr": 0.001,
+      "timestamp": "2025-10-26T06:55:42.887Z",
+      "marketUrl": "https://polymarket.com/event/will-ucr-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "outcomes": "[\"Yes\", \"No\"]",
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ]
+    }
+  },
+  "note": "Data shows markets with high 24hr volume (>$5k) or significant price changes (>1%). Use the marketUrl to verify trades on Polymarket. This represents market-level activity, not individual trades."
+}

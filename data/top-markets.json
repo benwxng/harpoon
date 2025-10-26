@@ -1,0 +1,241 @@
+{
+  "markets": [
+    {
+      "id": "521918",
+      "question": "Will UCR hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "slug": "will-ucr-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "volume24hr": 610372.6800000002,
+      "volume7d": 6441343.610000002,
+      "volumeTotal": 8027050.270424,
+      "liquidity": 14829.32607,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ],
+      "priceChange24hr": 0,
+      "marketUrl": "https://polymarket.com/event/will-ucr-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "517014",
+      "question": "Will The Fantastic Four: First Steps be the top grossing movie of 2025?",
+      "slug": "will-the-fantastic-four-first-steps-be-the-top-grossing-movie-of-2025",
+      "volume24hr": 385405.69599300006,
+      "volume7d": 843689.8900549999,
+      "volumeTotal": 10088648.221739,
+      "liquidity": 410398.48867,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ],
+      "priceChange24hr": 0,
+      "marketUrl": "https://polymarket.com/event/will-the-fantastic-four-first-steps-be-the-top-grossing-movie-of-2025",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "525410",
+      "question": "Will the Los Angeles Dodgers win the 2025 World Series?",
+      "slug": "will-the-los-angeles-dodgers-win-the-2025-world-series",
+      "volume24hr": 374111.502434,
+      "volume7d": 4946984.376033004,
+      "volumeTotal": 7047294.085242,
+      "liquidity": 819835.4145,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.68,
+        0.32
+      ],
+      "priceChange24hr": 0.145,
+      "marketUrl": "https://polymarket.com/event/will-the-los-angeles-dodgers-win-the-2025-world-series",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "521936",
+      "question": "Will HNP win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "slug": "will-hnp-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "volume24hr": 294880.661,
+      "volume7d": 296028.961,
+      "volumeTotal": 1455787.647655,
+      "liquidity": 9188.93264,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.005,
+        0.995
+      ],
+      "priceChange24hr": 0,
+      "marketUrl": "https://polymarket.com/event/will-hnp-win-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "525386",
+      "question": "Will the Toronto Blue Jays win the 2025 World Series?",
+      "slug": "will-the-toronto-blue-jays-win-the-2025-world-series",
+      "volume24hr": 229363.21682099998,
+      "volume7d": 2827881.8270820035,
+      "volumeTotal": 4730681.648442,
+      "liquidity": 728388.86132,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.3205,
+        0.6795
+      ],
+      "priceChange24hr": -0.1455,
+      "marketUrl": "https://polymarket.com/event/will-the-toronto-blue-jays-win-the-2025-world-series",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "516863",
+      "question": "Will Bitcoin reach $200,000 by December 31, 2025?",
+      "slug": "will-bitcoin-reach-200000-by-december-31-2025",
+      "volume24hr": 143668.570528,
+      "volume7d": 486581.61633799976,
+      "volumeTotal": 5529261.936026,
+      "liquidity": 209014.29317,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.032,
+        0.968
+      ],
+      "priceChange24hr": 0.0065,
+      "marketUrl": "https://polymarket.com/event/will-bitcoin-reach-200000-by-december-31-2025",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "525362",
+      "question": "Will George Russell be the 2025 Drivers Champion?",
+      "slug": "will-george-russell-be-the-2025-drivers-champion",
+      "volume24hr": 108944.23564799999,
+      "volume7d": 3373385.124244996,
+      "volumeTotal": 25697770.709964,
+      "liquidity": 487536.25415,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ],
+      "priceChange24hr": 0,
+      "marketUrl": "https://polymarket.com/event/will-george-russell-be-the-2025-drivers-champion",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "516947",
+      "question": "Maduro out in 2025?",
+      "slug": "maduro-out-in-2025",
+      "volume24hr": 104595.12509199993,
+      "volume7d": 786770.7487940023,
+      "volumeTotal": 3823040.50527,
+      "liquidity": 226417.8555,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.235,
+        0.765
+      ],
+      "priceChange24hr": -0.005,
+      "marketUrl": "https://polymarket.com/event/maduro-out-in-2025",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "537898",
+      "question": "Will Trump pardon Sam Bankman-Fried in 2025?",
+      "slug": "will-trump-pardon-sam-bankman-fried-in-2025",
+      "volume24hr": 86600.059307,
+      "volume7d": 349680.73353699985,
+      "volumeTotal": 558408.027531,
+      "liquidity": 59177.71281,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.087,
+        0.913
+      ],
+      "priceChange24hr": 0.009,
+      "marketUrl": "https://polymarket.com/event/will-trump-pardon-sam-bankman-fried-in-2025",
+      "active": true,
+      "closed": false
+    },
+    {
+      "id": "517018",
+      "question": "Will Thunderbolts be the top grossing movie of 2025?",
+      "slug": "will-thunderbolts-be-the-top-grossing-movie-of-2025",
+      "volume24hr": 73972.19399400002,
+      "volume7d": 755219.4722369999,
+      "volumeTotal": 9422103.224313,
+      "liquidity": 395181.50046,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.0035,
+        0.9965
+      ],
+      "priceChange24hr": 0,
+      "marketUrl": "https://polymarket.com/event/will-thunderbolts-be-the-top-grossing-movie-of-2025",
+      "active": true,
+      "closed": false
+    }
+  ],
+  "count": 10,
+  "lastUpdated": "2025-10-26T07:58:15.919Z",
+  "summary": {
+    "totalVolume24hr": 2411913.9408170003,
+    "avgVolume24hr": 241191.39408170004,
+    "topMarket": {
+      "id": "521918",
+      "question": "Will UCR hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+      "slug": "will-ucr-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "volume24hr": 610372.6800000002,
+      "volume7d": 6441343.610000002,
+      "volumeTotal": 8027050.270424,
+      "liquidity": 14829.32607,
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "outcomePrices": [
+        0.0005,
+        0.9995
+      ],
+      "priceChange24hr": 0,
+      "marketUrl": "https://polymarket.com/event/will-ucr-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+      "active": true,
+      "closed": false
+    }
+  }
+}
