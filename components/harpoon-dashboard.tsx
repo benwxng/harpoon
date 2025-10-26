@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import {
   motion,
@@ -23,9 +23,9 @@ const mockWhaleData = {
     value: "$2,100,000",
   },
   todaysActivity: {
-    high: 6,
-    medium: 10,
-    low: 32,
+    high: 12,
+    medium: 26,
+    low: 54,
   },
 };
 
@@ -316,42 +316,55 @@ export default function HarpoonDashboard() {
   }, []);
 
   // Fetch top markets with live data
-  const fetchTopMarkets = async (filterType = filter) => {
-    try {
-      setIsRefreshing(true);
-      const response = await fetch(
-        `/api/top-markets?filter=${filterType}&minVolume=1000000`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        if (data.markets && data.markets.length > 0) {
-          // Transform API data to match our UI format
-          const formattedMarkets = data.markets.map(
-            (market: any, idx: number) => ({
-              id: idx + 1,
-              title: market.title.toUpperCase(),
-              candidates: [
-                { name: "YES", percentage: market.yes_price },
-                { name: "NO", percentage: market.no_price },
-              ],
-              volume: `$${Math.round(market.volume).toLocaleString()}`,
-              flag: market.image_url || getMarketEmoji(market.title),
-              polymarket_url: market.polymarket_url,
-              price_change_1h: market.price_change_1h,
-              last_updated: market.last_updated,
-            })
-          );
-          setMarkets(formattedMarkets);
-          setConnectionStrength("STRONG");
+  const fetchTopMarkets = useCallback(
+    async (filterType = filter) => {
+      try {
+        setIsRefreshing(true);
+        const response = await fetch(
+          `/api/top-markets?filter=${filterType}&minVolume=1000000`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          if (data.markets && data.markets.length > 0) {
+            // Transform API data to match our UI format
+            const formattedMarkets = data.markets.map(
+              (market: any, idx: number) => ({
+                id: idx + 1,
+                title: market.title.toUpperCase(),
+                candidates: [
+                  { name: "YES", percentage: market.yes_price },
+                  { name: "NO", percentage: market.no_price },
+                ],
+                volume: `$${Math.round(market.volume).toLocaleString()}`,
+                flag: market.image_url || getMarketEmoji(market.title),
+                polymarket_url: market.polymarket_url,
+                price_change_1h: market.price_change_1h,
+                last_updated: market.last_updated,
+              })
+            );
+            setMarkets(formattedMarkets);
+            setConnectionStrength("STRONG");
+
+            // Cache to localStorage
+            try {
+              localStorage.setItem(
+                `markets-${filterType}`,
+                JSON.stringify(formattedMarkets)
+              );
+            } catch (e) {
+              console.error("Failed to cache markets:", e);
+            }
+          }
         }
+      } catch (error) {
+        console.error("Failed to fetch top markets:", error);
+        setConnectionStrength("WEAK");
+      } finally {
+        setIsRefreshing(false);
       }
-    } catch (error) {
-      console.error("Failed to fetch top markets:", error);
-      setConnectionStrength("WEAK");
-    } finally {
-      setIsRefreshing(false);
-    }
-  };
+    },
+    [filter]
+  );
 
   // Refresh trades by calling API to regenerate trades.json
   const handleRefresh = async () => {
@@ -370,11 +383,23 @@ export default function HarpoonDashboard() {
   };
 
   useEffect(() => {
+    // Load from cache immediately
+    try {
+      const cached = localStorage.getItem(`markets-${filter}`);
+      if (cached) {
+        setMarkets(JSON.parse(cached));
+      }
+    } catch (e) {
+      console.error("Failed to load cached markets:", e);
+    }
+
+    // Then fetch fresh data
     fetchTopMarkets(filter);
+
     // Refresh every 5 minutes (300 seconds)
     const interval = setInterval(() => fetchTopMarkets(filter), 300000);
     return () => clearInterval(interval);
-  }, [filter]);
+  }, [filter, fetchTopMarkets]);
 
   // Sort trades based on selected filter
   const sortedTrades = [...whaleTrades].sort((a, b) => {
@@ -418,17 +443,50 @@ export default function HarpoonDashboard() {
     return `${month}-${day}-${year} ${hours}:${minutes}:${seconds}`;
   };
 
+  // Get the most recent trade (last whale trade)
+  const lastWhaleTrade =
+    whaleTrades.length > 0
+      ? (() => {
+          const parseDate = (dateStr: string) => {
+            const [datePart, timePart] = dateStr.split(", ");
+            const [month, day, year] = datePart.split("/");
+            const [hours, minutes, seconds] = timePart.split(":");
+            return new Date(
+              2000 + parseInt(year),
+              parseInt(month) - 1,
+              parseInt(day),
+              parseInt(hours),
+              parseInt(minutes),
+              parseInt(seconds)
+            ).getTime();
+          };
+          return [...whaleTrades].sort(
+            (a, b) => parseDate(b.date) - parseDate(a.date)
+          )[0];
+        })()
+      : null;
+
+  // Get the largest trade by dollar amount
+  const largestTrade =
+    whaleTrades.length > 0
+      ? [...whaleTrades].sort((a, b) => {
+          const aAmount = parseFloat(a.price.replace(/[$,]/g, ""));
+          const bAmount = parseFloat(b.price.replace(/[$,]/g, ""));
+          return bAmount - aAmount;
+        })[0]
+      : null;
+
   return (
     <div className="h-[calc(100vh-40px)] bg-[#0a0a0a] text-[#c0c0c0] font-mono m-5 relative border border-[#333] overflow-hidden flex flex-col">
       {/* Header */}
       <div className="pt-4 px-4">
-        <h1 className="text-lg font-extralight tracking-tight text-white ml-1">
+        <h1 className="text-2xl font-extralight tracking-tight text-white ml-3 mt-1">
           HARPOON
         </h1>
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-12 gap-6 flex-1 p-4 min-h-0">
+      <div className="grid grid-cols-12 gap-6 flex-1 p-6 min-h-0">
         {/* Left Sidebar */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -442,29 +500,55 @@ export default function HarpoonDashboard() {
               <h2 className="text-sm mb-3 text-white">LAST WHALE TRADE</h2>
               <div className="space-y-1 text-xs">
                 <div className="flex items-start">
-                  <span className="text-[#888]">&gt;&gt; WHALE ID:</span>
+                  <span className="text-[#888]">&gt;&gt; WHALE: </span>
+                  <span className="text-white ml-1">
+                    {lastWhaleTrade?.trader || "..."}
+                  </span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-[#888]">&gt;&gt; TXN #:</span>
+                  <span className="text-[#888]">&gt;&gt; SIZE: </span>
+                  <span className="text-white ml-1">
+                    {lastWhaleTrade?.price || "..."}
+                  </span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-[#888]">&gt;&gt; VALUE:</span>
+                  <span className="text-[#888]">&gt;&gt; POS: </span>
+                  <span className="text-white ml-1">
+                    {lastWhaleTrade
+                      ? `${
+                          lastWhaleTrade.position
+                        } @ ${lastWhaleTrade.probability.toFixed(1)}%`
+                      : "..."}
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Top Value Trade */}
+            {/* Largest Trade */}
             <div>
-              <h2 className="text-sm mb-3 text-white">TOP VALUE TRADE</h2>
+              <h2 className="text-sm mb-3 text-white">LARGEST TRADE</h2>
               <div className="space-y-1 text-xs">
                 <div className="flex items-start">
-                  <span className="text-[#888]">&gt;&gt; WHALE ID:</span>
+                  <span className="text-[#888]">&gt;&gt; WHALE: </span>
+                  <span className="text-white ml-1">
+                    {largestTrade?.trader || "..."}
+                  </span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-[#888]">&gt;&gt; TXN #:</span>
+                  <span className="text-[#888]">&gt;&gt; SIZE: </span>
+                  <span className="text-white ml-1">
+                    {largestTrade?.price || "..."}
+                  </span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-[#888]">&gt;&gt; VALUE:</span>
+                  <span className="text-[#888]">&gt;&gt; POS: </span>
+                  <span className="text-white ml-1">
+                    {largestTrade
+                      ? `${
+                          largestTrade.position
+                        } @ ${largestTrade.probability.toFixed(1)}%`
+                      : "..."}
+                  </span>
                 </div>
               </div>
             </div>
@@ -524,7 +608,7 @@ export default function HarpoonDashboard() {
             <div>
               <div className="space-y-2 text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="text-[#888]">VOL INDEX</span>
+                  <span className="text-[#888] w-28">VOL INDEX</span>
                   <div className="flex gap-1">
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -559,7 +643,7 @@ export default function HarpoonDashboard() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#888]">VOL INDEX</span>
+                  <span className="text-[#888] w-28">SENTIMENT</span>
                   <div className="flex gap-1">
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -594,7 +678,7 @@ export default function HarpoonDashboard() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#888]">VOL INDEX</span>
+                  <span className="text-[#888] w-28">WHALE ACTIVITY</span>
                   <div className="flex gap-1">
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -633,11 +717,11 @@ export default function HarpoonDashboard() {
 
             {/* Lorem Ipsum Globe */}
             <div className="flex flex-col">
-              <div className="text-xs text-[#888] text-left mb-2">
-                LOREM IPSUM
+              <div className="text-sm text-white text-left mb-2">
+                MARKET PULSE
               </div>
               <img
-                src="/globe.svg"
+                src="/stretchglobe.svg"
                 alt="Globe"
                 className="w-32 h-32 mx-auto text-[#777]"
                 style={{
@@ -660,7 +744,7 @@ export default function HarpoonDashboard() {
             }`}
           >
             {/* Connection Status */}
-            <div className="absolute top-4 right-4 flex items-center gap-2 text-xs z-10">
+            <div className="absolute top-10 right-9 flex items-center gap-2 text-xs z-10">
               <div className="w-2 h-2 rounded-full bg-[#457892]"></div>
               <span className="text-[#888]">
                 CONNECTION:{" "}
@@ -767,7 +851,7 @@ export default function HarpoonDashboard() {
                       className="px-4 py-2 border border-[#333] bg-[#0a0a0a] text-xs hover:bg-[#1a1a1a] transition-colors cursor-pointer"
                     >
                       <option value="recent">MOST RECENT</option>
-                      <option value="largest">LARGEST BUYS</option>
+                      <option value="largest">LARGEST</option>
                       <option value="impact">IMPACT</option>
                     </motion.select>
                   </div>
@@ -798,7 +882,7 @@ export default function HarpoonDashboard() {
 
                           {/* Market Info */}
                           <div className="flex-1">
-                            <h3 className="text-sm text-white font-bold mb-1">
+                            <h3 className="text-sm text-white font-semi-bold mb-1">
                               {txn.market}
                             </h3>
                             <div className="text-xs text-[#888] mb-2">
@@ -867,33 +951,25 @@ export default function HarpoonDashboard() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="col-span-3 space-y-4 overflow-y-auto"
         >
-          {/* Filter Controls */}
-          <div className="flex items-center gap-2 mb-2">
+          <div className="text-xs text-[#888] mb-2">
+            &gt;&gt;{" "}
             <select
               value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="text-xs bg-[#0f0f0f] border border-[#333] text-white pl-1 pr-1 py-1 w-32"
+              onChange={(e) => {
+                setFilter(e.target.value);
+                fetchTopMarkets(e.target.value);
+              }}
+              className="bg-transparent border-none text-[#888] hover:text-white transition-colors cursor-pointer outline-none appearance-none w-28"
+              style={{
+                textDecoration: "underline",
+                textDecorationStyle: "dotted",
+              }}
             >
-              <option value="volume">Top Volume</option>
-              <option value="competitive">Competitive</option>
-              <option value="volatile">Most Volatile</option>
-            </select>
-            <button
-              onClick={() => fetchTopMarkets(filter)}
-              disabled={isRefreshing}
-              className="text-xs bg-[#0f0f0f] border border-[#333] text-white px-2 py-1 hover:bg-[#1a1a1a] disabled:opacity-50"
-            >
-              {isRefreshing ? (
-                "..."
-              ) : (
-                <span className="rotate-90 inline-block">↻</span>
-              )}
-            </button>
-          </div>
-
-          <div className="text-xs text-[#888] mb-2">
-            &gt;&gt; {filter.toUpperCase()} MARKETS (
-            {filter === "competitive" ? "$500K+" : "$1M+"})
+              <option value="volume">DAILY VOLUME</option>
+              <option value="competitive">COMPETITIVE</option>
+              <option value="volatile">MOST VOLATILE</option>
+            </select>{" "}
+            MARKETS ({filter === "competitive" ? "$500K+" : "$1M+"})
           </div>
           {markets.map((market) => (
             <div
@@ -901,7 +977,7 @@ export default function HarpoonDashboard() {
               className="border border-[#333] p-3 bg-[#0f0f0f]"
             >
               <div className="flex items-start justify-between mb-2">
-                <div className="text-xs text-white font-bold flex-1">
+                <div className="text-xs text-white font-medium flex-1">
                   {market.title}
                 </div>
                 <div className="ml-2">
@@ -939,12 +1015,12 @@ export default function HarpoonDashboard() {
                 ))}
               </div>
               <div className="flex justify-between items-center text-xs">
-                <span className="text-[#777]">{market.volume} vol</span>
+                <span className="text-[#457892]">{market.volume} vol</span>
                 <a
                   href={market.polymarket_url || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-[#888] transition-colors pr-2"
+                  className="text-[#777] hover:text-[#888] transition-colors"
                 >
                   VIEW
                 </a>
