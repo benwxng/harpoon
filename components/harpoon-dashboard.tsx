@@ -479,10 +479,11 @@ export default function HarpoonDashboard() {
   return (
     <div className="h-[calc(100vh-40px)] bg-[#0a0a0a] text-[#c0c0c0] font-mono m-5 relative border border-[#333] overflow-hidden flex flex-col">
       {/* Header */}
-      <div className="pt-4 px-4">
+      <div className="pt-4 px-4 flex items-center gap-2">
         <h1 className="text-2xl font-extralight tracking-tight text-white ml-3 mt-1">
           HARPOON
         </h1>
+        <img src="/whitepoon.svg" alt="Harpoon" className="w-8 h-8 mt-2" />
       </div>
 
       {/* Main Grid */}
@@ -717,18 +718,38 @@ export default function HarpoonDashboard() {
 
             {/* Lorem Ipsum Globe */}
             <div className="flex flex-col">
-              <div className="text-sm text-white text-left mb-2">
-                MARKET PULSE
+              <div className="text-sm text-white text-left mb-12">
+                VIEW CHAIN
               </div>
               <img
                 src="/stretchglobe.svg"
                 alt="Globe"
-                className="w-32 h-32 mx-auto text-[#777]"
+                className="w-32 h-32 mx-auto text-[#777] mb-12"
                 style={{
                   filter:
                     "invert(48%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(91%) contrast(88%)",
                 }}
               />
+
+              {/* Links */}
+              <div className="flex gap-2 justify-center">
+                <a
+                  href="https://polygonscan.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors text-center flex-1"
+                >
+                  POLYSCAN
+                </a>
+                <a
+                  href="https://polygonscan.com/token/0x2791bca1f2de4661ed88a30c99a7a9449aa84174?a=0xc5d563a36ae78145c45a50134d48a1215220f80a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors text-center flex-1"
+                >
+                  POLYMARKET
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
