@@ -207,12 +207,33 @@ export default function HarpoonDashboard() {
   const [sortBy, setSortBy] = useState<"recent" | "largest" | "impact">(
     "recent"
   );
+  const [aiOpportunities, setAiOpportunities] = useState<any[]>([]);
+  const [currentOpportunityIndex, setCurrentOpportunityIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Load AI opportunities from JSON
+  useEffect(() => {
+    const loadAiOpportunities = async () => {
+      try {
+        const response = await fetch("/data/ai_opportunities.json");
+        if (response.ok) {
+          const data = await response.json();
+          if (data.opportunities && data.opportunities.length > 0) {
+            setAiOpportunities(data.opportunities);
+          }
+        }
+      } catch (error) {
+        console.error("Error loading AI opportunities:", error);
+      }
+    };
+
+    loadAiOpportunities();
   }, []);
 
   // Load trades from trades.json file
@@ -716,20 +737,83 @@ export default function HarpoonDashboard() {
               </div>
             </div>
 
-            {/* Lorem Ipsum Globe */}
+            {/* Harpoon AI Opportunities */}
             <div className="flex flex-col">
-              <div className="text-sm text-white text-left mb-12">
-                VIEW CHAIN
+              <div className="text-sm text-white text-left mb-8">
+                HARPOON AI
               </div>
-              <img
-                src="/stretchglobe.svg"
-                alt="Globe"
-                className="w-32 h-32 mx-auto text-[#777] mb-12"
-                style={{
-                  filter:
-                    "invert(48%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(91%) contrast(88%)",
-                }}
-              />
+
+              {/* AI Opportunity Carousel */}
+              {aiOpportunities.length > 0 && (
+                <div
+                  className="border border-[#333] bg-[#0a0a0a] p-3 mb-8 cursor-pointer hover:bg-[#1a1a1a] transition-colors"
+                  onClick={() =>
+                    setCurrentOpportunityIndex(
+                      (prev) => (prev + 1) % aiOpportunities.length
+                    )
+                  }
+                >
+                  <div className="space-y-2">
+                    {/* Question */}
+                    <div className="text-xs text-white font-medium leading-tight">
+                      {aiOpportunities[currentOpportunityIndex].question}
+                    </div>
+
+                    {/* Action */}
+                    <div className="text-xs">
+                      <span className="text-[#888]">ACTION: </span>
+                      <span
+                        className={`font-bold ${
+                          aiOpportunities[currentOpportunityIndex].tradeDetails
+                            .position === "YES"
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
+                        {aiOpportunities[currentOpportunityIndex].action}
+                      </span>
+                    </div>
+
+                    {/* Current Price */}
+                    <div className="text-xs">
+                      <span className="text-[#888]">PRICE: </span>
+                      <span className="text-white">
+                        {
+                          aiOpportunities[currentOpportunityIndex].tradeDetails
+                            .currentPrice
+                        }
+                        %
+                      </span>
+                    </div>
+
+                    {/* AI Confidence */}
+                    <div className="text-xs">
+                      <span className="text-[#888]">AI CONFIDENCE: </span>
+                      <span className="text-[#457892] font-bold">
+                        {
+                          aiOpportunities[currentOpportunityIndex].tradeDetails
+                            .aiConfidence
+                        }
+                        %
+                      </span>
+                    </div>
+
+                    {/* Carousel Indicator */}
+                    <div className="flex gap-1 justify-center pt-2">
+                      {aiOpportunities.map((_, idx) => (
+                        <div
+                          key={idx}
+                          className={`w-1.5 h-1.5 rounded-full ${
+                            idx === currentOpportunityIndex
+                              ? "bg-[#457892]"
+                              : "bg-[#333]"
+                          }`}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Links */}
               <div className="flex gap-2 justify-center">

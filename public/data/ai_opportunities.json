@@ -1,0 +1,150 @@
+{
+  "opportunities": [
+    {
+      "id": 1,
+      "question": "Will JD Vance win the 2028 US Presidential Election?",
+      "action": "BUY YES",
+      "tradeDetails": {
+        "position": "YES",
+        "currentPrice": 29.0,
+        "aiConfidence": 70.0,
+        "marketOdds": {
+          "yes": 29.0,
+          "no": 71.0
+        },
+        "expectedReturn": 244.8
+      },
+      "riskAnalysis": {
+        "riskLevel": "HIGH",
+        "volume24h": 102894,
+        "whaleActivity": 1,
+        "investment": {
+          "amount": 100,
+          "shares": 345,
+          "ifWins": 345,
+          "profit": 245,
+          "ifLoses": -100
+        }
+      },
+      "howFound": {
+        "priceAnalysis": "29% is significantly undervalued for a major VP candidate",
+        "marketSignals": ["Undervalued", "Some whale activity", "Very recent data"],
+        "aiReasoning": [
+          "Price is below 50% (undervalued)",
+          "Recent whale activity suggests smart money interest",
+          "Recent data means fresh market sentiment",
+          "Political markets often have systematic undervaluation"
+        ]
+      },
+      "whyUndervalued": [
+        "Vance is Trump's VP: High visibility and influence",
+        "2028 is far enough: Market may be discounting too heavily",
+        "Political volatility: Markets often underestimate political outcomes",
+        "Recent activity: Someone with $10k+ thinks it's worth betting on"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Will Trump meet with Putin by November 30?",
+      "action": "BUY YES",
+      "tradeDetails": {
+        "position": "YES",
+        "currentPrice": 15.5,
+        "aiConfidence": 60.0,
+        "marketOdds": {
+          "yes": 15.5,
+          "no": 84.5
+        },
+        "expectedReturn": 545.2
+      },
+      "riskAnalysis": {
+        "riskLevel": "HIGH",
+        "volume24h": 34351,
+        "whaleActivity": 1,
+        "investment": {
+          "amount": 100,
+          "shares": 645,
+          "ifWins": 645,
+          "profit": 545,
+          "ifLoses": -100
+        }
+      },
+      "howFound": {
+        "priceAnalysis": "15.5% is extremely undervalued for a high-probability event",
+        "marketSignals": ["Very undervalued", "Low volume", "Some whale activity"],
+        "aiReasoning": [
+          "Very low price (15.5%) suggests market pessimism",
+          "Trump-Putin meetings are historically common",
+          "Short timeframe (by Nov 30) increases likelihood",
+          "Whale activity indicates someone thinks it's worth betting on"
+        ]
+      },
+      "whyUndervalued": [
+        "Historical precedent: Trump and Putin have met multiple times",
+        "Geopolitical necessity: Both leaders benefit from direct communication",
+        "Short timeframe: Only 5 weeks left, high probability of meeting",
+        "Market pessimism: 15.5% seems too low for such a common occurrence",
+        "Recent diplomatic activity: International relations often move quickly"
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Will China invade Taiwan by end of 2026?",
+      "action": "BUY YES",
+      "tradeDetails": {
+        "position": "YES",
+        "currentPrice": 16.5,
+        "aiConfidence": 70.0,
+        "marketOdds": {
+          "yes": 16.5,
+          "no": 83.5
+        },
+        "expectedReturn": 506.1
+      },
+      "riskAnalysis": {
+        "riskLevel": "HIGH",
+        "volume24h": 1272,
+        "whaleActivity": 1,
+        "investment": {
+          "amount": 100,
+          "shares": 606,
+          "ifWins": 606,
+          "profit": 506,
+          "ifLoses": -100
+        }
+      },
+      "howFound": {
+        "priceAnalysis": "16.5% is extremely undervalued for a major geopolitical event",
+        "marketSignals": ["Very undervalued", "Low volume", "Some whale activity"],
+        "aiReasoning": [
+          "Price is significantly below 50% (undervalued)",
+          "Geopolitical events are often mispriced",
+          "Long timeframe (end of 2026) allows for many scenarios",
+          "Whale activity suggests institutional interest"
+        ]
+      },
+      "whyUndervalued": [
+        "Geopolitical tensions: China-Taiwan relations are at historic lows",
+        "Military buildup: China has been increasing military pressure",
+        "Long timeframe: 2+ years allows for many escalation scenarios",
+        "Market underestimation: Geopolitical events are often underpriced",
+        "Recent activity: Someone with significant capital thinks it's worth betting on"
+      ]
+    }
+  ],
+  "overallRiskAssessment": {
+    "summary": "All 3 trades are HIGH RISK",
+    "reasons": [
+      "Binary outcomes: You either win big or lose everything",
+      "Political uncertainty: These events are inherently unpredictable",
+      "High leverage: Small price movements = large percentage returns",
+      "Liquidity concerns: Especially #3 (China-Taiwan) has very low volume"
+    ],
+    "note": "The AI is being conservative by only recommending high-confidence opportunities (60-70% confidence) and focusing on undervalued political markets where it has detected smart money activity."
+  },
+  "metadata": {
+    "totalOpportunities": 3,
+    "generatedAt": "2025-10-26T00:00:00Z",
+    "source": "AI Market Analysis"
+  }
+}
