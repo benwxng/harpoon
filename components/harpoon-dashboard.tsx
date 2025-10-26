@@ -170,7 +170,6 @@ export default function HarpoonDashboard() {
   const [markets, setMarkets] = useState(mockMarkets);
   const [filter, setFilter] = useState('volume');
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const [sortBy, setSortBy] = useState<"recent" | "largest" | "impact">(
     "recent"
   );
@@ -848,8 +847,6 @@ export default function HarpoonDashboard() {
             &gt;&gt; {filter.toUpperCase()} MARKETS ({filter === 'competitive' ? '$500K+' : '$1M+'})
           </div>
           {markets.map((market) => (
-          <div className="text-xs text-[#888] mb-2">&gt;&gt; TOP MARKETS</div>
-          {mockMarkets.map((market) => (
             <div
               key={market.id}
               className="border border-[#333] p-3 bg-[#0f0f0f]"
