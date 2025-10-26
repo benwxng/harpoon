@@ -154,7 +154,12 @@ const mockTransactions = [
     shares: 1203,
     trader: "LOREM",
   },
-];
+].map((txn) => ({
+  ...txn,
+  icon: "/ditherharpoon.svg",
+  marketUrl: "#",
+  traderUrl: "#",
+}));
 
 export default function HarpoonDashboard() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -165,6 +170,8 @@ export default function HarpoonDashboard() {
   const [markets, setMarkets] = useState(mockMarkets);
   const [filter, setFilter] = useState('volume');
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [sortBy, setSortBy] = useState<"recent" | "largest">("recent");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -173,43 +180,104 @@ export default function HarpoonDashboard() {
     return () => clearInterval(timer);
   }, []);
 
-  // Fetch real whale trades
+  // Load trades from trades.json file
   useEffect(() => {
-    const fetchWhaleTrades = async () => {
+    const loadTrades = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("/api/whale-trades");
+        console.log("Fetching trades from /data/trades.json...");
+        const response = await fetch("/data/trades.json");
+        console.log("Response status:", response.status, response.ok);
         if (response.ok) {
           const data = await response.json();
+          console.log("Loaded trades:", data.trades?.length);
           if (data.trades && data.trades.length > 0) {
-            // Transform API data to match our UI format
-            const formattedTrades = data.trades.map((trade: any) => ({
-              id: trade.id,
-              market: trade.market,
-              date: new Date(trade.timestamp * 1000).toLocaleString(),
-              position: trade.outcome,
-              probability: parseFloat(trade.price) * 100,
-              type: trade.side,
-              price: `$${trade.tradeValue.toLocaleString()}`,
-              shares: Math.round(parseFloat(trade.size)),
-              trader: trade.maker.slice(0, 10),
-            }));
+            // Transform Supabase data to match our UI format
+            const formattedTrades = data.trades.map((trade: any) => {
+              // Extract title, icon, and slug from platform_data
+              let title = "Unknown Market";
+              let icon = "/ditherharpoon.svg"; // fallback
+              let slug = "";
+
+              if (
+                trade.platform_data &&
+                typeof trade.platform_data === "object"
+              ) {
+                title =
+                  trade.platform_data.title ||
+                  trade.market_question ||
+                  "Unknown Market";
+                icon = trade.platform_data.icon || icon;
+                slug = trade.platform_data.slug || "";
+              } else if (trade.market_question) {
+                title = trade.market_question;
+              }
+
+              // Construct Polymarket URL
+              const marketUrl = slug
+                ? `https://polymarket.com/event/${slug}`
+                : "#";
+
+              // Format timestamp
+              const date = new Date(trade.timestamp);
+              const formattedDate = `${String(date.getMonth() + 1).padStart(
+                2,
+                "0"
+              )}/${String(date.getDate()).padStart(2, "0")}/${String(
+                date.getFullYear()
+              ).slice(-2)}, ${String(date.getHours()).padStart(
+                2,
+                "0"
+              )}:${String(date.getMinutes()).padStart(2, "0")}:${String(
+                date.getSeconds()
+              ).padStart(2, "0")}`;
+
+              const traderUsername = trade.trader_username;
+              // Truncate long usernames (which are actually wallet addresses) with ellipses
+              let traderDisplay = traderUsername || "UNKNOWN";
+              if (traderDisplay !== "UNKNOWN" && traderDisplay.length > 10) {
+                traderDisplay = `${traderDisplay.slice(0, 6)}...`;
+              }
+              // Only create a working profile link if there's an actual username
+              const traderUrl = traderUsername
+                ? `https://polymarket.com/@${traderUsername}`
+                : "#";
+
+              return {
+                id: trade.id,
+                market: title.toUpperCase(),
+                date: formattedDate,
+                position: (trade.outcome || "YES").toUpperCase(),
+                probability: parseFloat(trade.price) * 100,
+                type: (trade.side || "BUY").toUpperCase(),
+                price: `$${Math.round(
+                  parseFloat(trade.size || 0)
+                ).toLocaleString()}`,
+                shares: Math.round(parseFloat(trade.shares || 0)),
+                trader: traderDisplay,
+                traderUrl,
+                icon,
+                marketUrl,
+              };
+            });
             setWhaleTrades(formattedTrades);
             setConnectionStrength("STRONG");
           }
+        } else {
+          console.error(
+            "Failed to fetch trades.json, status:",
+            response.status
+          );
         }
       } catch (error) {
-        console.error("Failed to fetch whale trades:", error);
-        setConnectionStrength("WEAK");
+        console.error("Error loading trades:", error);
+        setConnectionStrength("ERROR");
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchWhaleTrades();
-    // Refresh every 60 seconds
-    const interval = setInterval(fetchWhaleTrades, 60000);
-    return () => clearInterval(interval);
+    loadTrades();
   }, []);
 
   // Fetch top markets with live data
@@ -241,6 +309,17 @@ export default function HarpoonDashboard() {
     } catch (error) {
       console.error("Failed to fetch top markets:", error);
       setConnectionStrength("WEAK");
+  // Refresh trades by calling API to regenerate trades.json
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      const response = await fetch("/api/supabase-trades");
+      if (response.ok) {
+        // Reload the page to get fresh data
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error refreshing trades:", error);
     } finally {
       setIsRefreshing(false);
     }
@@ -252,6 +331,34 @@ export default function HarpoonDashboard() {
     const interval = setInterval(() => fetchTopMarkets(filter), 300000);
     return () => clearInterval(interval);
   }, [filter]);
+  // Sort trades based on selected filter
+  const sortedTrades = [...whaleTrades].sort((a, b) => {
+    if (sortBy === "largest") {
+      // Sort by dollar amount (remove $ and commas, then parse)
+      const aAmount = parseFloat(a.price.replace(/[$,]/g, ""));
+      const bAmount = parseFloat(b.price.replace(/[$,]/g, ""));
+      return bAmount - aAmount; // Descending order (largest first)
+    } else {
+      // Sort by most recent - parse date strings (format: MM/DD/YY, HH:MM:SS)
+      const parseDate = (dateStr: string) => {
+        const [datePart, timePart] = dateStr.split(", ");
+        const [month, day, year] = datePart.split("/");
+        const [hours, minutes, seconds] = timePart.split(":");
+        return new Date(
+          2000 + parseInt(year),
+          parseInt(month) - 1,
+          parseInt(day),
+          parseInt(hours),
+          parseInt(minutes),
+          parseInt(seconds)
+        ).getTime();
+      };
+
+      const aTime = parseDate(a.date);
+      const bTime = parseDate(b.date);
+      return bTime - aTime; // Descending order (most recent first)
+    }
+  });
 
   const formatTime = (date: Date) => {
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -575,20 +682,53 @@ export default function HarpoonDashboard() {
                   transition={{ duration: 0.02 }}
                   className="w-full flex-1 flex flex-col min-h-0"
                 >
-                  {/* Back Button */}
-                  <motion.button
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.02 }}
-                    className="mb-4 px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors self-start"
-                    onClick={() => setShowTransactions(false)}
-                  >
-                    ← BACK
-                  </motion.button>
+                  {/* Back, Refresh, and Filter Controls */}
+                  <div className="flex gap-2 mb-4 items-center">
+                    <motion.button
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.02 }}
+                      className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors"
+                      onClick={() => setShowTransactions(false)}
+                      disabled={isRefreshing}
+                    >
+                      ← BACK
+                    </motion.button>
+                    <motion.button
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.02, delay: 0.05 }}
+                      className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors disabled:opacity-50"
+                      onClick={handleRefresh}
+                      disabled={isRefreshing}
+                    >
+                      {isRefreshing ? "REFRESHING..." : "🔄 REFRESH"}
+                    </motion.button>
+
+                    {/* Filter Dropdown */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.02, delay: 0.1 }}
+                      className="flex items-center gap-2"
+                    >
+                      <span className="text-xs text-[#888]">SORT:</span>
+                      <select
+                        value={sortBy}
+                        onChange={(e) =>
+                          setSortBy(e.target.value as "recent" | "largest")
+                        }
+                        className="px-3 py-2 border border-[#333] bg-[#0f0f0f] text-xs text-white hover:bg-[#1a1a1a] transition-colors cursor-pointer focus:outline-none focus:border-[#555]"
+                      >
+                        <option value="recent">MOST RECENT</option>
+                        <option value="largest">LARGEST BUYS</option>
+                      </select>
+                    </motion.div>
+                  </div>
 
                   {/* Transactions List */}
                   <div className="space-y-4 flex-1 overflow-y-auto min-h-0 pr-2">
-                    {whaleTrades.map((txn) => (
+                    {sortedTrades.map((txn) => (
                       <motion.div
                         key={txn.id}
                         initial={{ opacity: 0, y: 15 }}
@@ -596,19 +736,17 @@ export default function HarpoonDashboard() {
                         transition={{ duration: 0.2 }}
                         className="border border-[#333] bg-[#0f0f0f] p-4"
                       >
-                        <div className="flex gap-4">
-                          {/* Chart Icon */}
+                        <div className="flex gap-4 items-center">
+                          {/* Market Icon */}
                           <div className="flex-shrink-0">
-                            <div className="w-12 h-12 bg-white flex items-center justify-center">
-                              <svg
-                                className="w-8 h-8"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              >
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                              </svg>
+                            <div className="w-12 h-12 flex items-center justify-center p-1">
+                              <Image
+                                src={txn.icon || "/ditherharpoon.svg"}
+                                alt="Market Icon"
+                                width={64}
+                                height={64}
+                                className="w-full h-full object-cover"
+                              />
                             </div>
                           </div>
 
@@ -618,7 +756,15 @@ export default function HarpoonDashboard() {
                               {txn.market}
                             </h3>
                             <div className="text-xs text-[#888] mb-2">
-                              {txn.date} • VIEW MARKET »
+                              {txn.date} •{" "}
+                              <a
+                                href={txn.marketUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-white transition-colors"
+                              >
+                                VIEW MARKET »
+                              </a>
                             </div>
                             <div
                               className={`text-xs font-bold ${
@@ -627,7 +773,8 @@ export default function HarpoonDashboard() {
                                   : "text-red-500"
                               }`}
                             >
-                              {txn.position} @ {txn.probability}% PROBABILITY
+                              {txn.position} @ {txn.probability.toFixed(1)}%
+                              PROBABILITY
                             </div>
                           </div>
 
@@ -642,11 +789,19 @@ export default function HarpoonDashboard() {
                             >
                               {txn.type} {txn.price}
                             </div>
-                            <div className="text-xs text-[#888]">
-                              SHARES: {txn.shares}
+                            <div className="text-xs text-[#888] mb-1">
+                              {txn.shares.toLocaleString()} SHARES
                             </div>
                             <div className="text-xs text-[#888]">
-                              TRADER: {txn.trader}
+                              TRADER:{" "}
+                              <a
+                                href={txn.traderUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-white transition-colors"
+                              >
+                                {txn.trader}
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -690,6 +845,8 @@ export default function HarpoonDashboard() {
             &gt;&gt; {filter.toUpperCase()} MARKETS ({filter === 'competitive' ? '$500K+' : '$1M+'})
           </div>
           {markets.map((market) => (
+          <div className="text-xs text-[#888] mb-2">&gt;&gt; TOP MARKETS</div>
+          {mockMarkets.map((market) => (
             <div
               key={market.id}
               className="border border-[#333] p-3 bg-[#0f0f0f]"
