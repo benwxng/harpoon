@@ -19,6 +19,7 @@ COLUMNS:
 
 id (SERIAL PRIMARY KEY)
   - Auto-incrementing unique identifier for each snapshot
+  - This is also the txn hash on polyscan which is very important for linking
   - Used internally by Supabase
   
 market_id (VARCHAR(255), NOT NULL)

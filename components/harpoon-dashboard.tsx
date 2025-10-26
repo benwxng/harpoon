@@ -171,7 +171,9 @@ export default function HarpoonDashboard() {
   const [filter, setFilter] = useState('volume');
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [sortBy, setSortBy] = useState<"recent" | "largest">("recent");
+  const [sortBy, setSortBy] = useState<"recent" | "largest" | "impact">(
+    "recent"
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -338,6 +340,9 @@ export default function HarpoonDashboard() {
       const aAmount = parseFloat(a.price.replace(/[$,]/g, ""));
       const bAmount = parseFloat(b.price.replace(/[$,]/g, ""));
       return bAmount - aAmount; // Descending order (largest first)
+    } else if (sortBy === "impact") {
+      // Sort by lowest probability (most contrarian/impactful bets)
+      return a.probability - b.probability; // Ascending order (lowest first)
     } else {
       // Sort by most recent - parse date strings (format: MM/DD/YY, HH:MM:SS)
       const parseDate = (dateStr: string) => {
@@ -685,9 +690,9 @@ export default function HarpoonDashboard() {
                   {/* Back, Refresh, and Filter Controls */}
                   <div className="flex gap-2 mb-4 items-center">
                     <motion.button
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 0 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.02 }}
+                      transition={{ duration: 0.1 }}
                       className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors"
                       onClick={() => setShowTransactions(false)}
                       disabled={isRefreshing}
@@ -695,9 +700,9 @@ export default function HarpoonDashboard() {
                       ← BACK
                     </motion.button>
                     <motion.button
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 0 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.02, delay: 0.05 }}
+                      transition={{ duration: 0.1, delay: 0 }}
                       className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors disabled:opacity-50"
                       onClick={handleRefresh}
                       disabled={isRefreshing}
@@ -706,24 +711,22 @@ export default function HarpoonDashboard() {
                     </motion.button>
 
                     {/* Filter Dropdown */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                    <motion.select
+                      initial={{ opacity: 0, y: 0 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.02, delay: 0.1 }}
-                      className="flex items-center gap-2"
+                      transition={{ duration: 0.1, delay: 0 }}
+                      value={sortBy}
+                      onChange={(e) =>
+                        setSortBy(
+                          e.target.value as "recent" | "largest" | "impact"
+                        )
+                      }
+                      className="px-4 py-2 border border-[#333] bg-[#0a0a0a] text-xs hover:bg-[#1a1a1a] transition-colors cursor-pointer"
                     >
-                      <span className="text-xs text-[#888]">SORT:</span>
-                      <select
-                        value={sortBy}
-                        onChange={(e) =>
-                          setSortBy(e.target.value as "recent" | "largest")
-                        }
-                        className="px-3 py-2 border border-[#333] bg-[#0f0f0f] text-xs text-white hover:bg-[#1a1a1a] transition-colors cursor-pointer focus:outline-none focus:border-[#555]"
-                      >
-                        <option value="recent">MOST RECENT</option>
-                        <option value="largest">LARGEST BUYS</option>
-                      </select>
-                    </motion.div>
+                      <option value="recent">MOST RECENT</option>
+                      <option value="largest">LARGEST BUYS</option>
+                      <option value="impact">IMPACT</option>
+                    </motion.select>
                   </div>
 
                   {/* Transactions List */}

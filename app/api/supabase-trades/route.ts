@@ -33,26 +33,42 @@ export async function GET() {
       );
     }
 
+    // Filter out college football and sports bets (those with "VS." in the title)
+    const filteredTrades = trades.filter((trade) => {
+      const title = trade.platform_data?.title || trade.market_question || "";
+      return !title.toUpperCase().includes("VS.");
+    });
+
+    console.log(
+      `📊 Filtered ${
+        trades.length - filteredTrades.length
+      } sports bets (with "VS.")`
+    );
+
     // Prepare output with metadata
     const output = {
-      trades,
-      count: trades.length,
+      trades: filteredTrades,
+      count: filteredTrades.length,
       lastUpdated: new Date().toISOString(),
       summary: {
-        totalVolume: trades.reduce(
+        totalVolume: filteredTrades.reduce(
           (sum, t) => sum + (parseFloat(t.size) || 0),
           0
         ),
-        largestTrade: trades[0],
+        largestTrade: filteredTrades[0],
         averageTradeSize:
-          trades.reduce((sum, t) => sum + (parseFloat(t.size) || 0), 0) /
-          trades.length,
-        uniqueMarkets: new Set(trades.map((t) => t.market_id)).size,
+          filteredTrades.reduce(
+            (sum, t) => sum + (parseFloat(t.size) || 0),
+            0
+          ) / filteredTrades.length,
+        uniqueMarkets: new Set(filteredTrades.map((t) => t.market_id)).size,
         uniqueTraders: new Set(
-          trades.map((t) => t.trader_wallet || t.taker_address).filter(Boolean)
+          filteredTrades
+            .map((t) => t.trader_wallet || t.taker_address)
+            .filter(Boolean)
         ).size,
       },
-      note: "Real whale trades from Polymarket via Supabase. All trades >= $10k.",
+      note: "Real whale trades from Polymarket via Supabase. All trades >= $10k. ",
     };
 
     // Write to JSON file in public folder so it's accessible
@@ -61,7 +77,7 @@ export async function GET() {
       mkdirSync(publicDir, { recursive: true });
       const filePath = join(publicDir, "trades.json");
       writeFileSync(filePath, JSON.stringify(output, null, 2));
-      console.log(`✅ Wrote ${trades.length} trades to ${filePath}`);
+      console.log(`✅ Wrote ${filteredTrades.length} trades to ${filePath}`);
     } catch (fileError) {
       console.error("Error writing to file:", fileError);
       // Don't fail the API request if file write fails
