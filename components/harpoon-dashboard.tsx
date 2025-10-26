@@ -29,66 +29,32 @@ const mockWhaleData = {
   },
 };
 
+// Helper function to get emoji for market
+function getMarketEmoji(title: string): string {
+  const lowerTitle = title.toLowerCase();
+  if (lowerTitle.includes('fed') || lowerTitle.includes('interest rate')) return '📊';
+  if (lowerTitle.includes('election') || lowerTitle.includes('mayor') || lowerTitle.includes('president')) return '🗳️';
+  if (lowerTitle.includes('war') || lowerTitle.includes('conflict')) return '⚔️';
+  if (lowerTitle.includes('tech') || lowerTitle.includes('ai') || lowerTitle.includes('bitcoin') || lowerTitle.includes('crypto')) return '💻';
+  if (lowerTitle.includes('health') || lowerTitle.includes('pandemic') || lowerTitle.includes('vaccine')) return '💉';
+  if (lowerTitle.includes('sports') || lowerTitle.includes('nfl') || lowerTitle.includes('nba')) return '🏈';
+  if (lowerTitle.includes('weather') || lowerTitle.includes('climate')) return '🌍';
+  if (lowerTitle.includes('economy') || lowerTitle.includes('market') || lowerTitle.includes('stock')) return '📈';
+  if (lowerTitle.includes('court') || lowerTitle.includes('trial') || lowerTitle.includes('guilty')) return '⚖️';
+  return '🎯';
+}
+
 const mockMarkets = [
   {
     id: 1,
-    title: "NEW YORK MAYORAL ELECTION",
+    title: "LOADING MARKETS...",
     candidates: [
-      { name: "ZOHRAN MAMDANI", percentage: 97 },
-      { name: "ANDREW CUOMO", percentage: 3 },
+      { name: "YES", percentage: 50 },
+      { name: "NO", percentage: 50 },
     ],
-    volume: "$288,300,323",
-    flag: "🇺🇸",
-  },
-  {
-    id: 2,
-    title: "NEW YORK MAYORAL ELECTION",
-    candidates: [
-      { name: "ZOHRAN MAMDANI", percentage: 97 },
-      { name: "ANDREW CUOMO", percentage: 3 },
-    ],
-    volume: "$288,300,323",
-    flag: "🇺🇸",
-  },
-  {
-    id: 3,
-    title: "NEW YORK MAYORAL ELECTION",
-    candidates: [
-      { name: "ZOHRAN MAMDAMI", percentage: 97 },
-      { name: "ANDREW CUOMO", percentage: 3 },
-    ],
-    volume: "$288,300,323",
-    flag: "🇺🇸",
-  },
-  {
-    id: 4,
-    title: "NEW YORK MAYORAL ELECTION",
-    candidates: [
-      { name: "ZOHRAN MAMDAMI", percentage: 97 },
-      { name: "ANDREW CUOMO", percentage: 3 },
-    ],
-    volume: "$288,300,323",
-    flag: "🇺🇸",
-  },
-  {
-    id: 5,
-    title: "NEW YORK MAYORAL ELECTION",
-    candidates: [
-      { name: "ZOHRAN MAMDAMI", percentage: 97 },
-      { name: "ANDREW CUOMO", percentage: 3 },
-    ],
-    volume: "$288,300,323",
-    flag: "🇺🇸",
-  },
-  {
-    id: 6,
-    title: "NEW YORK MAYORAL ELECTION",
-    candidates: [
-      { name: "ZOHRAN MAMDAMI", percentage: 97 },
-      { name: "ANDREW CUOMO", percentage: 3 },
-    ],
-    volume: "$288,300,323",
-    flag: "🇺🇸",
+    volume: "$0",
+    flag: "⏳",
+    polymarket_url: "#",
   },
 ];
 
@@ -201,6 +167,9 @@ export default function HarpoonDashboard() {
   const [showTransactions, setShowTransactions] = useState(false);
   const [whaleTrades, setWhaleTrades] = useState(mockTransactions);
   const [isLoading, setIsLoading] = useState(false);
+  const [markets, setMarkets] = useState(mockMarkets);
+  const [filter, setFilter] = useState('volume');
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [sortBy, setSortBy] = useState<"recent" | "largest">("recent");
 
@@ -311,6 +280,35 @@ export default function HarpoonDashboard() {
     loadTrades();
   }, []);
 
+  // Fetch top markets with live data
+  const fetchTopMarkets = async (filterType = filter) => {
+    try {
+      setIsRefreshing(true);
+      const response = await fetch(`/api/top-markets?filter=${filterType}&minVolume=1000000`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.markets && data.markets.length > 0) {
+          // Transform API data to match our UI format
+          const formattedMarkets = data.markets.map((market: any, idx: number) => ({
+            id: idx + 1,
+            title: market.title.toUpperCase(),
+            candidates: [
+              { name: "YES", percentage: market.yes_price },
+              { name: "NO", percentage: market.no_price },
+            ],
+            volume: `$${Math.round(market.volume).toLocaleString()}`,
+            flag: market.image_url || getMarketEmoji(market.title),
+            polymarket_url: market.polymarket_url,
+            price_change_1h: market.price_change_1h,
+            last_updated: market.last_updated,
+          }));
+          setMarkets(formattedMarkets);
+          setConnectionStrength("STRONG");
+        }
+      }
+    } catch (error) {
+      console.error("Failed to fetch top markets:", error);
+      setConnectionStrength("WEAK");
   // Refresh trades by calling API to regenerate trades.json
   const handleRefresh = async () => {
     setIsRefreshing(true);
@@ -327,6 +325,12 @@ export default function HarpoonDashboard() {
     }
   };
 
+  useEffect(() => {
+    fetchTopMarkets(filter);
+    // Refresh every 5 minutes (300 seconds)
+    const interval = setInterval(() => fetchTopMarkets(filter), 300000);
+    return () => clearInterval(interval);
+  }, [filter]);
   // Sort trades based on selected filter
   const sortedTrades = [...whaleTrades].sort((a, b) => {
     if (sortBy === "largest") {
@@ -817,6 +821,30 @@ export default function HarpoonDashboard() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="col-span-3 space-y-4 overflow-y-auto"
         >
+          {/* Filter Controls */}
+          <div className="flex items-center gap-2 mb-2">
+            <select
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="text-xs bg-[#0f0f0f] border border-[#333] text-white pl-1 pr-1 py-1 w-32"
+            >
+              <option value="volume">Top Volume</option>
+              <option value="competitive">Competitive</option>
+              <option value="volatile">Most Volatile</option>
+            </select>
+            <button
+              onClick={() => fetchTopMarkets(filter)}
+              disabled={isRefreshing}
+              className="text-xs bg-[#0f0f0f] border border-[#333] text-white px-2 py-1 hover:bg-[#1a1a1a] disabled:opacity-50"
+            >
+              {isRefreshing ? '...' : <span className="rotate-90 inline-block">↻</span>}
+            </button>
+          </div>
+          
+          <div className="text-xs text-[#888] mb-2">
+            &gt;&gt; {filter.toUpperCase()} MARKETS ({filter === 'competitive' ? '$500K+' : '$1M+'})
+          </div>
+          {markets.map((market) => (
           <div className="text-xs text-[#888] mb-2">&gt;&gt; TOP MARKETS</div>
           {mockMarkets.map((market) => (
             <div
@@ -827,7 +855,23 @@ export default function HarpoonDashboard() {
                 <div className="text-xs text-white font-bold flex-1">
                   {market.title}
                 </div>
-                <div className="text-lg ml-2">{market.flag}</div>
+                <div className="ml-2">
+                  {market.flag.startsWith('http') ? (
+                    <img 
+                      src={market.flag} 
+                      alt="Market" 
+                      className="w-6 h-6 rounded object-cover"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        const nextEl = e.currentTarget.nextElementSibling as HTMLElement;
+                        if (nextEl) nextEl.style.display = 'block';
+                      }}
+                    />
+                  ) : null}
+                  <div className="text-lg" style={{ display: market.flag.startsWith('http') ? 'none' : 'block' }}>
+                    {market.flag}
+                  </div>
+                </div>
               </div>
               <div className="space-y-1 text-xs mb-2">
                 {market.candidates.map((candidate, idx) => (
@@ -839,9 +883,14 @@ export default function HarpoonDashboard() {
               </div>
               <div className="flex justify-between items-center text-xs">
                 <span className="text-[#777]">{market.volume} vol</span>
-                <button className="text-white hover:text-[#888] transition-colors">
+                <a 
+                  href={market.polymarket_url || '#'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-[#888] transition-colors pr-2"
+                >
                   VIEW
-                </button>
+                </a>
               </div>
             </div>
           ))}
