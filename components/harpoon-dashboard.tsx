@@ -504,7 +504,11 @@ export default function HarpoonDashboard() {
         <h1 className="text-2xl font-extralight tracking-tight text-white ml-3 mt-1">
           HARPOON
         </h1>
-        <img src="/whitepoon.svg" alt="Harpoon" className="w-8 h-8 mt-2" />
+        <img
+          src="/whitepoon.svg"
+          alt="Harpoon"
+          className="w-6 h-6 md:w-8 md:h-8 mt-2"
+        />
       </div>
 
       {/* Main Grid */}
@@ -845,11 +849,13 @@ export default function HarpoonDashboard() {
         >
           <div
             className={`flex-1 flex flex-col relative min-h-0 overflow-hidden ${
-              showTransactions ? "px-4 py-8" : "p-4 items-center justify-center"
+              showTransactions
+                ? "px-6 py-8 md:px-4 md:py-8"
+                : "p-4 items-center justify-center"
             }`}
           >
             {/* Connection Status */}
-            <div className="absolute top-6 right-6 md:top-10 md:right-9 flex items-center gap-2 text-xs z-10">
+            <div className="absolute top-12 right-10 md:top-10 md:right-9 flex items-center gap-2 text-xs z-10">
               <div className="w-2 h-2 rounded-full bg-[#457892]"></div>
               <span className="text-[#888]">
                 CONNECTION:{" "}
@@ -882,12 +888,12 @@ export default function HarpoonDashboard() {
                   </div>
 
                   {/* Timestamp and View Txns - Between whale and chart */}
-                  <div className="w-full flex justify-between items-center mb-4 px-2 md:px-4">
-                    <div className="text-xs text-[#888] pl-1 md:pl-0">
+                  <div className="w-full flex justify-between items-center mb-4 px-6 md:px-4">
+                    <div className="text-xs text-[#888]">
                       {formatTime(currentTime)}
                     </div>
                     <button
-                      className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors mr-1 md:mr-0"
+                      className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors"
                       onClick={() => setShowTransactions(true)}
                     >
                       VIEW TXNS
@@ -896,7 +902,7 @@ export default function HarpoonDashboard() {
 
                   {/* Volume Chart - Pinned to bottom */}
                   <div className="absolute bottom-0 left-0 right-0 pb-4">
-                    <div className="flex items-end justify-between h-28 gap-1 px-8">
+                    <div className="flex items-end justify-between h-28 gap-1 px-6 md:px-8">
                       {mockVolumeData.map((height, idx) => (
                         <div
                           key={idx}
