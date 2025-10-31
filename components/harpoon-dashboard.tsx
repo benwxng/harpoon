@@ -498,7 +498,7 @@ export default function HarpoonDashboard() {
       : null;
 
   return (
-    <div className="h-[calc(100vh-40px)] bg-[#0a0a0a] text-[#c0c0c0] font-mono m-5 relative border border-[#333] overflow-hidden flex flex-col">
+    <div className="h-[calc(100vh-10px)] md:h-[calc(100vh-40px)] bg-[#0a0a0a] text-[#c0c0c0] font-mono m-1 md:m-5 relative border border-[#333] overflow-hidden flex flex-col">
       {/* Header */}
       <div className="pt-4 px-4 flex items-center gap-2">
         <h1 className="text-2xl font-extralight tracking-tight text-white ml-3 mt-1">
@@ -508,13 +508,13 @@ export default function HarpoonDashboard() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-12 gap-6 flex-1 p-6 min-h-0">
+      <div className="grid grid-cols-12 gap-2 md:gap-6 flex-1 p-2 md:p-6 min-h-0">
         {/* Left Sidebar */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="col-span-3 overflow-y-auto"
+          className="hidden md:block col-span-3 overflow-y-auto"
         >
           <div className="border border-[#333] bg-[#0f0f0f] p-4 space-y-6 h-full">
             {/* Last Whale Trade */}
@@ -841,7 +841,7 @@ export default function HarpoonDashboard() {
         {/* Center Content */}
         <motion.div
           initial={{ opacity: 1, y: 0, scale: 1 }}
-          className="col-span-6 flex flex-col overflow-hidden"
+          className="col-span-12 md:col-span-6 flex flex-col overflow-hidden"
         >
           <div
             className={`flex-1 flex flex-col relative min-h-0 overflow-hidden ${
@@ -1054,7 +1054,7 @@ export default function HarpoonDashboard() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="col-span-3 space-y-4 overflow-y-auto"
+          className="hidden md:block col-span-3 space-y-4 overflow-y-auto"
         >
           <div className="text-xs text-[#888] mb-2">
             &gt;&gt;{" "}
