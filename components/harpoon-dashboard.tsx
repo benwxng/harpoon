@@ -512,7 +512,7 @@ export default function HarpoonDashboard() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-12 gap-2 md:gap-6 flex-1 p-2 md:p-6 min-h-0">
+      <div className="grid grid-cols-12 gap-2 md:gap-2 flex-1 p-2 md:p-2 min-h-0">
         {/* Left Sidebar */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -855,7 +855,7 @@ export default function HarpoonDashboard() {
             }`}
           >
             {/* Connection Status */}
-            <div className="absolute top-12 right-10 md:top-10 md:right-9 flex items-center gap-2 text-xs z-10">
+            <div className="absolute top-12 right-10 md:top-2 md:right-2 first-letter:flex items-center gap-2 text-xs z-10">
               <div className="w-2 h-2 rounded-full bg-[#457892]"></div>
               <span className="text-[#888]">
                 CONNECTION:{" "}
