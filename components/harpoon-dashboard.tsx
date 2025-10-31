@@ -849,7 +849,7 @@ export default function HarpoonDashboard() {
             }`}
           >
             {/* Connection Status */}
-            <div className="absolute top-10 right-9 flex items-center gap-2 text-xs z-10">
+            <div className="absolute top-6 right-6 md:top-10 md:right-9 flex items-center gap-2 text-xs z-10">
               <div className="w-2 h-2 rounded-full bg-[#457892]"></div>
               <span className="text-[#888]">
                 CONNECTION:{" "}
@@ -875,19 +875,19 @@ export default function HarpoonDashboard() {
                       alt="Whale"
                       width={400}
                       height={400}
-                      className="opacity-80 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                      className="opacity-80 hover:scale-105 transition-transform duration-300 cursor-pointer w-64 md:w-[400px] h-auto"
                       priority
                       onClick={() => setShowTransactions(true)}
                     />
                   </div>
 
                   {/* Timestamp and View Txns - Between whale and chart */}
-                  <div className="w-full flex justify-between items-center mb-4 px-4">
-                    <div className="text-xs text-[#888]">
+                  <div className="w-full flex justify-between items-center mb-4 px-2 md:px-4">
+                    <div className="text-xs text-[#888] pl-1 md:pl-0">
                       {formatTime(currentTime)}
                     </div>
                     <button
-                      className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors"
+                      className="px-4 py-2 border border-[#333] text-xs hover:bg-[#1a1a1a] transition-colors mr-1 md:mr-0"
                       onClick={() => setShowTransactions(true)}
                     >
                       VIEW TXNS
