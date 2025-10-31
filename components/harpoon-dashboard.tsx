@@ -855,7 +855,7 @@ export default function HarpoonDashboard() {
             }`}
           >
             {/* Connection Status */}
-            <div className="absolute top-12 right-10 md:top-2 md:right-2 first-letter:flex items-center gap-2 text-xs z-10">
+            <div className="absolute top-12 right-10 md:top-10 md:right-9 flex items-center gap-2 text-xs z-10">
               <div className="w-2 h-2 rounded-full bg-[#457892]"></div>
               <span className="text-[#888]">
                 CONNECTION:{" "}
